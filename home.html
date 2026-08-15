@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillio - Learning Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="SSSSSSSWSS.png">
+</head>
+
+<body>
+  <!-- Authentication Check Script -->
+  <script>
+    // Redirect to login if not authenticated
+    (function () {
+      const user = localStorage.getItem('currentUser');
+      if (!user) {
+        window
+        window.location.href = 'login.html';
+      }
+    })();
+  </script>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Skillio</span>
+      </div>
+      <button class="sidebar-toggle mobile-only" id="closeSidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li><a href="#" class="nav-link active" data-section="dashboard">
+            <i class="fas fa-chart-line"></i>
+            <span>Dashboard</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="my-class">
+            <i class="fas fa-book"></i>
+            <span>My Class</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="my-courses">
+            <i class="fas fa-graduation-cap"></i>
+            <span>My Courses</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="events">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Events</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="explore">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="reports">
+            <i class="fas fa-chart-bar"></i>
+            <span>Reports</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="instructors">
+            <i class="fas fa-chalkboard-user"></i>
+            <span>Instructors</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a></li>
+        <li><a href="#" class="nav-link" data-section="skillio-ai">
+            <i class="fas fa-robot"></i>
+            <span>Skillio AI</span>
+          </a></li>
+      </ul>
+    </nav>
+
+    <!-- User Profile Section -->
+    <div class="sidebar-user-profile">
+      <div class="user-avatar">
+        <img src="https://i.pravatar.cc/60?img=5" alt="User">
+      </div>
+      <div class="user-info">
+        <p class="user-name" id="userName">User</p>
+        <p class="user-level" id="userLevel">Beginner</p>
+      </div>
+      <button class="btn-logout" id="logoutBtn" title="Logout">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+
+    <div class="sidebar-friends">
+      <div class="friends-header">
+        <h3>Friends</h3>
+        <button class="btn-add-friend" id="addFriendBtn">
+          <i class="fas fa-plus"></i> Add
+        </button>
+      </div>
+      <div class="friend-item" data-friend-id="1" data-friend-name="Ava Lee">
+        <img src="https://i.pravatar.cc/40?img=1" alt="Ava Lee">
+        <div class="friend-info">
+          <p class="friend-name">Ava Lee</p>
+          <p class="friend-points">25 Points</p>
+        </div>
+      </div>
+      <div class="friend-item" data-friend-id="2" data-friend-name="Noah Kim">
+        <img src="https://i.pravatar.cc/40?img=2" alt="Noah Kim">
+        <div class="friend-info">
+          <p class="friend-name">Noah Kim</p>
+          <p class="friend-points">128 Points</p>
+        </div>
+      </div>
+      <div class="friend-item" data-friend-id="3" data-friend-name="Ethan Cruz">
+        <img src="https://i.pravatar.cc/40?img=3" alt="Ethan Cruz">
+        <div class="friend-info">
+          <p class="friend-name">Ethan Cruz</p>
+          <p class="friend-points">45 Points</p>
+        </div>
+      </div>
+      <div class="friend-item" data-friend-id="4" data-friend-name="Maya Patel">
+        <img src="https://i.pravatar.cc/40?img=4" alt="Maya Patel">
+        <div class="friend-info">
+          <p class="friend-name">Maya Patel</p>
+          <p class="friend-points">180 Points</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+      <button class="menu-toggle" id="openSidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="header-title">Skillio</div>
+      <div class="header-icons">
+        <i class="fas fa-bell"></i>
+        <img src="https://i.pravatar.cc/40?img=5" alt="Profile" class="profile-img">
+      </div>
+    </header>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Main Section -->
+      <section class="main-section">
+        <!-- Dashboard Section -->
+        <div class="section-content active" id="dashboard">
+          <!-- Search Bar -->
+          <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search by topic, title, or name">
+          </div>
+
+          <!-- Premium Banner -->
+          <div class="premium-banner">
+            <div class="banner-content">
+              <h2>Unlock 1,000+ Premium Courses Today</h2>
+              <p>Learn from industry experts with exclusive content designed to boost your skills.</p>
+              <button class="btn-premium">Go Premium <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="banner-image">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+          </div>
+
+          <!-- Stats Section -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon courses">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="stat-content">
+                <p class="stat-value">05/08</p>
+                <p class="stat-label">Complete</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon points">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-content">
+                <p class="stat-value">80/100</p>
+                <p class="stat-label">Points</p>
+              </div>
+            </div>
+            <div class="stat-card progress-card">
+              <div class="progress-ring">
+                <svg viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="54" class="progress-circle-bg"></circle>
+                  <circle cx="60" cy="60" r="54" class="progress-circle"></circle>
+                </svg>
+                <div class="progress-text">75%</div>
+              </div>
+              <p class="stat-label">Progress</p>
+            </div>
+          </div>
+
+          <!-- Continue Watching -->
+          <div class="continue-watching">
+            <div class="section-header">
+              <h3>Continue Watching</h3>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="videos-grid">
+              <div class="video-card" data-video-id="UB1O30fR-EE">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/UB1O30fR-EE/mqdefault.jpg" alt="Web Development"
+                    onerror="this.src='https://via.placeholder.com/320x180/667eea/ffffff?text=Video+Not+Available'">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                  </div>
+                  <div class="video-duration">12:45</div>
+                </div>
+                <h4>Web Development Fundamentals</h4>
+                <p class="course-category">Tech Academy</p>
+              </div>
+              <div class="video-card" data-video-id="c9Wg6Cb_YlU">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/c9Wg6Cb_YlU/mqdefault.jpg" alt="UI/UX Design"
+                    onerror="this.src='https://via.placeholder.com/320x180/667eea/ffffff?text=Video+Not+Available'">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                  </div>
+                  <div class="video-duration">13:33</div>
+                </div>
+                <h4>UI/UX Design Masterclass</h4>
+                <p class="course-category">DesignCourse</p>
+              </div>
+              <div class="video-card" data-video-id="gpC0ssgMk8M">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/gpC0ssgMk8M/mqdefault.jpg" alt="Mobile Development"
+                    onerror="this.src='https://via.placeholder.com/320x180/667eea/ffffff?text=Video+Not+Available'">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                  </div>
+                  <div class="video-duration">11:33</div>
+                </div>
+                <h4>Mobile App Development with React Native</h4>
+                <p class="course-category">Tech Academy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- My Courses Section -->
+        <div class="section-content" id="my-courses">
+          <div class="section-header-row">
+            <h2>My Courses</h2>
+            <button class="btn-primary" id="watchOnYoutubeBtn">
+              <i class="fab fa-youtube"></i> Browse YouTube
+            </button>
+          </div>
+          <p style="color: var(--text-secondary); margin-top: 10px;">Explore all the courses you're currently
+            enrolled in. Click any course to watch videos.</p>
+          <div class="videos-grid" id="myCoursesVideos" style="margin-top: 25px;"></div>
+          <div id="videoPlayerContainer" style="margin-top: 25px; display: none;">
+            <div class="video-player-wrapper">
+              <iframe id="videoPlayer" width="100%" height="500" src="" frameborder="0"
+                allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+              <div class="video-player-info">
+                <h3 id="currentVideoTitle">Select a video to play</h3>
+                <p id="currentVideoChannel"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="section-content" id="events">
+          <div class="events-layout">
+            <div class="events-main">
+              <div class="section-header-row">
+                <h2>Events</h2>
+                <button class="btn-add-note" id="addEventBtn">
+                  <i class="fas fa-plus"></i> Add Event
+                </button>
+              </div>
+              <p style="color: var(--text-secondary); margin-top: 10px;">Your daily planner and upcoming
+                events. Click a date to add events.</p>
+
+              <div class="mini-calendar" style="margin-top: 20px;">
+                <div class="calendar-header-row">
+                  <button class="calendar-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                  <h4 id="currentMonth">August 2025</h4>
+                  <button class="calendar-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid-header">
+                  <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+              </div>
+
+              <div class="events-planner" style="margin-top: 25px;">
+                <h3 style="font-size: 18px; margin-bottom: 15px;" id="selectedDateTitle">Today's Events
+                </h3>
+                <div id="eventsPlannerList">
+                  <div class="event-planner-item" data-event-id="1">
+                    <div class="event-icon quiz">
+                      <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="event-planner-info">
+                      <h4>UI Basics Quiz</h4>
+                      <p>6 quick MCQs on design</p>
+                      <span class="event-time"><i class="fas fa-clock"></i> 10:00 AM</span>
+                    </div>
+                    <button class="btn-complete-event" data-event-id="1"><i class="fas fa-check"></i></button>
+                  </div>
+                  <div class="event-planner-item" data-event-id="2">
+                    <div class="event-icon homework">
+                      <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="event-planner-info">
+                      <h4>Framer Homework</h4>
+                      <p>Make 3 interactive prototypes</p>
+                      <span class="event-time"><i class="fas fa-clock"></i> 2:00 PM</span>
+                    </div>
+                    <button class="btn-complete-event" data-event-id="2"><i class="fas fa-check"></i></button>
+                  </div>
+                  <div class="event-planner-item" data-event-id="3">
+                    <div class="event-icon code">
+                      <i class="fas fa-code"></i>
+                    </div>
+                    <div class="event-planner-info">
+                      <h4>CSS Live Code</h4>
+                      <p>Create interactive card component</p>
+                      <span class="event-time"><i class="fas fa-clock"></i> 4:30 PM</span>
+                    </div>
+                    <button class="btn-complete-event" data-event-id="3"><i class="fas fa-check"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="events-sidebar">
+              <div class="widget">
+                <div class="widget-header">
+                  <h4>Upcoming Events</h4>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="event-list">
+                  <div class="event-widget-item">
+                    <div class="event-icon quiz">
+                      <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="event-widget-info">
+                      <p class="event-title">UI Basics Quiz</p>
+                      <p class="event-desc">6 quick MCQs on design</p>
+                    </div>
+                  </div>
+                  <div class="event-widget-item">
+                    <div class="event-icon homework">
+                      <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="event-widget-info">
+                      <p class="event-title">Framer Homework</p>
+                      <p class="event-desc">Make 3 interactive</p>
+                    </div>
+                  </div>
+                  <div class="event-widget-item">
+                    <div class="event-icon code">
+                      <i class="fas fa-code"></i>
+                    </div>
+                    <div class="event-widget-info">
+                      <p class="event-title">CSS Live Code</p>
+                      <p class="event-desc">Create interactive card</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explore Section -->
+        <div class="section-content" id="explore">
+          <h2>Explore</h2>
+          <p style="color: var(--text-secondary); margin-top: 10px;">Discover new courses and learning paths
+            tailored to your interests.</p>
+
+          <div class="explore-search" style="margin-top: 20px;">
+            <input type="text" class="search-bar" placeholder="Search courses, topics, or instructors..."
+              id="exploreSearch">
+            <button class="btn-search" id="exploreSearchBtn"><i class="fas fa-search"></i></button>
+          </div>
+
+          <div class="explore-categories" style="margin-top: 25px;" id="exploreCategories">
+            <div class="category-card" data-category="web-development">
+              <div class="category-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <i class="fas fa-code"></i>
+              </div>
+              <h4>Web Development</h4>
+              <p>125 Courses</p>
+              <button class="btn-small" onclick="alert('Opening Web Development courses...')">Explore</button>
+            </div>
+            <div class="category-card" data-category="ui-ux-design">
+              <div class="category-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <h4>UI/UX Design</h4>
+              <p>98 Courses</p>
+              <button class="btn-small" onclick="alert('Opening UI/UX Design courses...')">Explore</button>
+            </div>
+            <div class="category-card" data-category="mobile-development">
+              <div class="category-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h4>Mobile Development</h4>
+              <p>76 Courses</p>
+              <button class="btn-small" onclick="alert('Opening Mobile Development courses...')">Explore</button>
+            </div>
+            <div class="category-card" data-category="game-development">
+              <div class="category-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <h4>Game Development</h4>
+              <p>54 Courses</p>
+              <button class="btn-small" onclick="alert('Opening Game Development courses...')">Explore</button>
+            </div>
+            <div class="category-card" data-category="graphic-design">
+              <div class="category-icon"
+                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                <i class="fas fa-image"></i>
+              </div>
+              <h4>Graphic Design</h4>
+              <p>62 Courses</p>
+              <button class="btn-small" onclick="alert('Opening Graphic Design courses...')">Explore</button>
+            </div>
+            <div class="category-card" data-category="data-science">
+              <div class="category-icon"
+                style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333;">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h4>Data Science</h4>
+              <p>89 Courses</p>
+              <button class="btn-small" onclick="alert('Opening Data Science courses...')">Explore</button>
+            </div>
+          </div>
+
+          <div class="trending-section" style="margin-top: 40px;">
+            <div class="section-header">
+              <h3>Trending Now</h3>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="videos-grid" id="trendingGrid" style="margin-top: 15px;"></div>
+          </div>
+        </div>
+
+        <!-- My Class Section -->
+        <div class="section-content" id="my-class">
+          <h2>My Class</h2>
+          <p style="color: white; margin-top: 20px;">Your classroom hub with schedules, assignments, and
+            materials.</p>
+
+          <!-- Class Tabs -->
+          <div class="class-tabs" style="margin-top: 30px;">
+            <button class="class-tab-btn active" data-tab="schedule">
+              <i class="fas fa-calendar-alt"></i> Schedule
+            </button>
+            <button class="class-tab-btn" data-tab="announcements">
+              <i class="fas fa-bullhorn"></i> Announcements
+            </button>
+            <button class="class-tab-btn" data-tab="assignments">
+              <i class="fas fa-tasks"></i> Assignments
+            </button>
+            <button class="class-tab-btn" data-tab="attendance">
+              <i class="fas fa-clipboard-list"></i> Attendance
+            </button>
+            <button class="class-tab-btn" data-tab="grades">
+              <i class="fas fa-chart-line"></i> Grades
+            </button>
+            <button class="class-tab-btn" data-tab="materials">
+              <i class="fas fa-folder"></i> Materials
+            </button>
+            <button class="class-tab-btn" data-tab="discussions">
+              <i class="fas fa-comments"></i> Discussions
+            </button>
+          </div>
+
+          <!-- Schedule Tab -->
+          <div class="class-tab-content active" data-tab="schedule">
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-day">
+                  <span class="day-name">Monday</span>
+                  <span class="day-date">Aug 14</span>
+                </div>
+                <div class="schedule-details">
+                  <h4>Web Development Basics</h4>
+                  <p><i class="fas fa-clock"></i> 10:00 AM - 11:30 AM</p>
+                  <p><i class="fas fa-map-marker-alt"></i> Room A-201</p>
+                  <span class="schedule-status upcoming">Upcoming</span>
+                </div>
+                <button class="btn-join">Join Class</button>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-day">
+                  <span class="day-name">Wednesday</span>
+                  <span class="day-date">Aug 16</span>
+                </div>
+                <div class="schedule-details">
+                  <h4>JavaScript Essentials</h4>
+                  <p><i class="fas fa-clock"></i> 2:00 PM - 3:30 PM</p>
+                  <p><i class="fas fa-map-marker-alt"></i> Online - Room B-105</p>
+                  <span class="schedule-status upcoming">Upcoming</span>
+                </div>
+                <button class="btn-join">Join Class</button>
+              </div>
+              <div class="schedule-item completed">
+                <div class="schedule-day">
+                  <span class="day-name">Friday</span>
+                  <span class="day-date">Aug 11</span>
+                </div>
+                <div class="schedule-details">
+                  <h4>CSS Advanced Techniques</h4>
+                  <p><i class="fas fa-clock"></i> 11:00 AM - 12:30 PM</p>
+                  <p><i class="fas fa-map-marker-alt"></i> Room C-301</p>
+                  <span class="schedule-status completed">Completed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Announcements Tab -->
+          <div class="class-tab-content" data-tab="announcements">
+            <div class="announcements-list">
+              <div class="announcement-card">
+                <div class="announcement-header">
+                  <h4>Important: Project Deadline Extended</h4>
+                  <span class="announcement-date">Aug 12, 2024</span>
+                </div>
+                <p>Dear Students, The final project deadline has been extended to August 25. Please
+                  update your submission plans accordingly.</p>
+                <div class="announcement-meta">
+                  <span><i class="fas fa-user"></i> Prof. John Smith</span>
+                  <span><i class="fas fa-eye"></i> 124 views</span>
+                </div>
+              </div>
+              <div class="announcement-card">
+                <div class="announcement-header">
+                  <h4>New Resources Available</h4>
+                  <span class="announcement-date">Aug 10, 2024</span>
+                </div>
+                <p>Check out the new video tutorials on advanced JavaScript concepts in the Materials
+                  section. These will help you with the upcoming assignment.</p>
+                <div class="announcement-meta">
+                  <span><i class="fas fa-user"></i> Prof. Sarah Johnson</span>
+                  <span><i class="fas fa-eye"></i> 89 views</span>
+                </div>
+              </div>
+              <div class="announcement-card">
+                <div class="announcement-header">
+                  <h4>Quiz Next Week</h4>
+                  <span class="announcement-date">Aug 8, 2024</span>
+                </div>
+                <p>A comprehensive quiz covering weeks 1-4 will be held next Wednesday. Please review
+                  all lecture notes and practice problems.</p>
+                <div class="announcement-meta">
+                  <span><i class="fas fa-user"></i> Prof. Mike Davis</span>
+                  <span><i class="fas fa-eye"></i> 156 views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assignments Tab -->
+          <div class="class-tab-content" data-tab="assignments">
+            <div class="assignments-list">
+              <div class="assignment-card">
+                <div class="assignment-header">
+                  <div class="assignment-title">
+                    <h4>Assignment 1: HTML Project</h4>
+                    <span class="assignment-points">20 Points</span>
+                  </div>
+                  <span class="assignment-status submitted">Submitted</span>
+                </div>
+                <p class="assignment-description">Create a responsive HTML webpage with semantic markup
+                  and proper structure.</p>
+                <div class="assignment-info">
+                  <span><i class="fas fa-calendar"></i> Due: Aug 15</span>
+                  <span><i class="fas fa-check-circle"></i> Submitted: Aug 14</span>
+                  <span class="grade-badge">Score: 18/20</span>
+                </div>
+                <button class="btn-view-feedback">View Feedback</button>
+              </div>
+              <div class="assignment-card">
+                <div class="assignment-header">
+                  <div class="assignment-title">
+                    <h4>Assignment 2: CSS Styling</h4>
+                    <span class="assignment-points">25 Points</span>
+                  </div>
+                  <span class="assignment-status pending">Pending</span>
+                </div>
+                <p class="assignment-description">Apply advanced CSS techniques including flexbox, grid,
+                  and animations to create a modern design.</p>
+                <div class="assignment-info">
+                  <span><i class="fas fa-calendar"></i> Due: Aug 20</span>
+                  <span class="time-remaining">⏱️ 8 days remaining</span>
+                </div>
+                <button class="btn-submit">Submit Assignment</button>
+              </div>
+              <div class="assignment-card">
+                <div class="assignment-header">
+                  <div class="assignment-title">
+                    <h4>Assignment 3: JavaScript Logic</h4>
+                    <span class="assignment-points">30 Points</span>
+                  </div>
+                  <span class="assignment-status pending">Pending</span>
+                </div>
+                <p class="assignment-description">Implement interactive features using JavaScript and
+                  DOM manipulation.</p>
+                <div class="assignment-info">
+                  <span><i class="fas fa-calendar"></i> Due: Aug 25</span>
+                  <span class="time-remaining">⏱️ 13 days remaining</span>
+                </div>
+                <button class="btn-submit">Submit Assignment</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance Tab -->
+          <div class="class-tab-content" data-tab="attendance">
+            <div class="attendance-summary">
+              <div class="attendance-stat">
+                <div class="stat-number">15/18</div>
+                <div class="stat-label">Classes Attended</div>
+              </div>
+              <div class="attendance-stat">
+                <div class="stat-number">83%</div>
+                <div class="stat-label">Attendance Rate</div>
+              </div>
+              <div class="attendance-stat">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Absences</div>
+              </div>
+              <div class="attendance-stat">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Late Arrivals</div>
+              </div>
+            </div>
+            <div class="attendance-list" style="margin-top: 30px;">
+              <div class="attendance-item">
+                <span class="attendance-date">Aug 12</span>
+                <span class="attendance-status present">Present</span>
+              </div>
+              <div class="attendance-item">
+                <span class="attendance-date">Aug 11</span>
+                <span class="attendance-status present">Present</span>
+              </div>
+              <div class="attendance-item">
+                <span class="attendance-date">Aug 10</span>
+                <span class="attendance-status absent">Absent</span>
+              </div>
+              <div class="attendance-item">
+                <span class="attendance-date">Aug 9</span>
+                <span class="attendance-status present">Present</span>
+              </div>
+              <div class="attendance-item">
+                <span class="attendance-date">Aug 8</span>
+                <span class="attendance-status late">Late</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grades Tab -->
+          <div class="class-tab-content" data-tab="grades">
+            <div class="grades-overview">
+              <div class="grades-card">
+                <h4>Overall Class Grade</h4>
+                <div class="grades-score">A-</div>
+                <p style="color: #999; font-size: 12px; margin-top: 8px;">Based on 3 assessments</p>
+              </div>
+              <div class="grades-card">
+                <h4>Current Average</h4>
+                <div class="grades-score">87%</div>
+                <p style="color: #999; font-size: 12px; margin-top: 8px;">Excellent performance</p>
+              </div>
+            </div>
+            <div class="grades-breakdown" style="margin-top: 30px;">
+              <h4 style="margin-bottom: 20px;">Grade Breakdown</h4>
+              <div class="grade-item">
+                <div class="grade-name">
+                  <span>Participation</span>
+                  <span class="grade-value">92%</span>
+                </div>
+                <div class="grade-bar">
+                  <div class="grade-fill" style="width: 92%;"></div>
+                </div>
+              </div>
+              <div class="grade-item">
+                <div class="grade-name">
+                  <span>Assignments</span>
+                  <span class="grade-value">88%</span>
+                </div>
+                <div class="grade-bar">
+                  <div class="grade-fill" style="width: 88%;"></div>
+                </div>
+              </div>
+              <div class="grade-item">
+                <div class="grade-name">
+                  <span>Quizzes</span>
+                  <span class="grade-value">85%</span>
+                </div>
+                <div class="grade-bar">
+                  <div class="grade-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div class="grade-item">
+                <div class="grade-name">
+                  <span>Midterm Exam</span>
+                  <span class="grade-value">82%</span>
+                </div>
+                <div class="grade-bar">
+                  <div class="grade-fill" style="width: 82%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Materials Tab -->
+          <div class="class-tab-content" data-tab="materials">
+            <div class="materials-filter">
+              <input type="text" class="materials-search" placeholder="Search materials...">
+            </div>
+            <div class="materials-by-week" style="margin-top: 20px;">
+              <div class="week-section">
+                <h4 class="week-title" data-week="1">
+                  <i class="fas fa-chevron-down"></i> Week 1: Introduction
+                </h4>
+                <div class="week-materials" data-week="1">
+                  <div class="material-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="material-info">
+                      <h5>Course Introduction</h5>
+                      <p>PDF • 2.4 MB</p>
+                    </div>
+                    <button class="btn-download"><i class="fas fa-download"></i></button>
+                  </div>
+                  <div class="material-card video-card-link"
+                    data-youtube-url="https://youtu.be/it1rTvBcfRg?list=PLP9IO4UYNF0VdAajP_5pYG-jG2JRrG72s">
+                    <i class="fas fa-video"></i>
+                    <div class="material-info">
+                      <h5>Welcome Video</h5>
+                      <p>Video • 1.2 MB</p>
+                    </div>
+                    <button class="btn-play" data-video-id="dQw4w9WgXcQ" data-video-title="Welcome Video"><i
+                        class="fas fa-play"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="week-section">
+                <h4 class="week-title" data-week="2">
+                  <i class="fas fa-chevron-down"></i> Week 2: HTML Fundamentals
+                </h4>
+                <div class="week-materials" data-week="2">
+                  <div class="material-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="material-info">
+                      <h5>Lecture Notes - Week 2</h5>
+                      <p>PDF • 3.1 MB</p>
+                    </div>
+                    <button class="btn-download"><i class="fas fa-download"></i></button>
+                  </div>
+                  <div class="material-card video-card-link" data-youtube-url="https://youtu.be/FQdaUv95mR8">
+                    <i class="fas fa-video"></i>
+                    <div class="material-info">
+                      <h5>HTML Tutorial for Beginners</h5>
+                      <p>Video • 12.5 MB</p>
+                    </div>
+                    <button class="btn-play" data-video-id="8m8jM5YsE0Y"
+                      data-video-title="HTML Tutorial for Beginners"><i class="fas fa-play"></i></button>
+                  </div>
+                  <div class="material-card">
+                    <i class="fas fa-file-code"></i>
+                    <div class="material-info">
+                      <h5>Code Examples</h5>
+                      <p>ZIP • 0.8 MB</p>
+                    </div>
+                    <button class="btn-download"><i class="fas fa-download"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="week-section">
+                <h4 class="week-title" data-week="3">
+                  <i class="fas fa-chevron-down"></i> Week 3: CSS Styling
+                </h4>
+                <div class="week-materials" data-week="3">
+                  <div class="material-card">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <div class="material-info">
+                      <h5>Presentation - Module 3</h5>
+                      <p>PPT • 5.1 MB</p>
+                    </div>
+                    <button class="btn-download"><i class="fas fa-download"></i></button>
+                  </div>
+                  <div class="material-card video-card-link" data-youtube-url="https://youtu.be/tfzGsCxutWk">
+                    <i class="fas fa-video"></i>
+                    <div class="material-info">
+                      <h5>Advanced CSS Techniques</h5>
+                      <p>Video • 8.7 MB</p>
+                    </div>
+                    <button class="btn-play" data-video-id="7gCRMC6nLvU" data-video-title="Advanced CSS Techniques"><i
+                        class="fas fa-play"></i></button>
+                  </div>
+                  <div class="material-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="material-info">
+                      <h5>CSS Tips & Tricks</h5>
+                      <p>PDF • 1.9 MB</p>
+                    </div>
+                    <button class="btn-download"><i class="fas fa-download"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discussions Tab -->
+          <div class="class-tab-content" data-tab="discussions">
+            <div class="discussions-header">
+              <button class="btn-new-discussion">
+                <i class="fas fa-plus"></i> Start New Discussion
+              </button>
+            </div>
+            <div class="discussions-list" style="margin-top: 20px;">
+              <div class="discussion-thread">
+                <div class="discussion-header">
+                  <h4>How to approach the HTML project?</h4>
+                  <span class="discussion-replies">12 replies</span>
+                </div>
+                <p class="discussion-preview">I'm not sure how to structure my HTML project. Should I
+                  use semantic HTML5 tags or just regular divs? Any best practices?</p>
+                <div class="discussion-meta">
+                  <span><i class="fas fa-user"></i> You</span>
+                  <span><i class="fas fa-clock"></i> Aug 10</span>
+                  <span class="last-reply">Last reply: Aug 12</span>
+                </div>
+                <button class="btn-view-thread">View Thread</button>
+              </div>
+              <div class="discussion-thread">
+                <div class="discussion-header">
+                  <h4>CSS Grid vs Flexbox - When to use each?</h4>
+                  <span class="discussion-replies">8 replies</span>
+                </div>
+                <p class="discussion-preview">What's the difference between CSS Grid and Flexbox? I'm
+                  confused about when to use one over the other in my projects.</p>
+                <div class="discussion-meta">
+                  <span><i class="fas fa-user"></i> Ava Lee</span>
+                  <span><i class="fas fa-clock"></i> Aug 9</span>
+                  <span class="last-reply">Last reply: Aug 11</span>
+                </div>
+                <button class="btn-view-thread">View Thread</button>
+              </div>
+              <div class="discussion-thread">
+                <div class="discussion-header">
+                  <h4>JavaScript async/await vs Promises</h4>
+                  <span class="discussion-replies">15 replies</span>
+                </div>
+                <p class="discussion-preview">I understand promises but async/await is still confusing.
+                  Can someone break down how they work and when to use each one?</p>
+                <div class="discussion-meta">
+                  <span><i class="fas fa-user"></i> Noah Kim</span>
+                  <span><i class="fas fa-clock"></i> Aug 8</span>
+                  <span class="last-reply">Last reply: Aug 12</span>
+                </div>
+                <button class="btn-view-thread">View Thread</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notes-section" style="margin-top: 30px;">
+          <div class="notes-header">
+            <h3 style="font-size: 18px; margin-bottom: 15px;">My Notes</h3>
+            <div class="notes-actions">
+              <button class="btn-add-note" id="addNoteBtn">
+                <i class="fas fa-plus"></i> Add Note
+              </button>
+              <button class="btn-record" id="startRecordBtn" title="Record voice note">
+                <i class="fas fa-microphone"></i> Record
+              </button>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    <!-- Reports Section -->
+    <div class="section-content" id="reports">
+      <h2>Reports</h2>
+      <p style="color: var(--text-secondary); margin-top: 10px;">Your learning progress, performance metrics, and
+        analytics.</p>
+
+      <div class="report-cards" style="margin-top: 25px;">
+        <div class="report-card">
+          <h4><i class="fas fa-chart-line"></i> Weekly Progress</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">Your progress this week</p>
+          <div style="margin-top: 10px; font-size: 24px; font-weight: bold; color: #667eea;">78%</div>
+          <div class="mini-progress">
+            <div class="mini-progress-bar" style="width: 78%;"></div>
+          </div>
+        </div>
+        <div class="report-card">
+          <h4><i class="fas fa-book-open"></i> Course Completion</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">Overall completion rate</p>
+          <div style="margin-top: 10px; font-size: 24px; font-weight: bold; color: #667eea;">62%</div>
+          <div class="mini-progress">
+            <div class="mini-progress-bar" style="width: 62%;"></div>
+          </div>
+        </div>
+        <div class="report-card">
+          <h4><i class="fas fa-star"></i> Quiz Performance</h4>
+          <p style="color: var(--text-secondary); font-size: 14px;">Average quiz score</p>
+          <div style="margin-top: 10px; font-size: 24px; font-weight: bold; color: #667eea;">85%</div>
+          <div class="mini-progress">
+            <div class="mini-progress-bar" style="width: 85%; background: #38ef7d;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-section" style="margin-top: 30px;">
+        <div class="chart-card">
+          <h4 style="margin-bottom: 15px; font-size: 16px;">Learning Activity (Last 7 Days)</h4>
+          <canvas id="activityChart" height="250"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4 style="margin-bottom: 15px; font-size: 16px;">Skills Progress</h4>
+          <canvas id="skillsChart" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructors Section -->
+    <div class="section-content" id="instructors">
+      <h2>Instructors</h2>
+      <p style="color: #999; margin-top: 20px;">Connect with our expert instructors.</p>
+      <div class="instructors-list" style="margin-top: 30px;">
+        <div class="instructor-card">
+          <img src="https://i.pravatar.cc/150?img=6" alt="Instructor">
+          <h4>John Smith</h4>
+          <p>Web Development Specialist</p>
+          <button class="btn-small">Contact</button>
+        </div>
+        <div class="instructor-card">
+          <img src="https://i.pravatar.cc/150?img=7" alt="Instructor">
+          <h4>Sarah Johnson</h4>
+          <p>UI/UX Design Expert</p>
+          <button class="btn-small">Contact</button>
+        </div>
+        <div class="instructor-card">
+          <img src="https://i.pravatar.cc/150?img=8" alt="Instructor">
+          <h4>Mike Davis</h4>
+          <p>JavaScript Guru</p>
+          <button class="btn-small">Contact</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Section -->
+    <div class="section-content" id="settings">
+      <h2>Settings</h2>
+      <p style="color: var(--text-secondary); margin-top: 10px;">Manage your account preferences and app settings.
+      </p>
+
+      <div class="settings-list" style="margin-top: 25px;">
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-user-circle"></i> Profile Settings</h4>
+            <p>Update your name, email, and profile picture</p>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-moon"></i> Dark Mode</h4>
+            <p>Toggle between light and dark theme</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-bell"></i> Notifications</h4>
+            <p>Manage push and email notifications</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="notificationsToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-shield-alt"></i> Privacy & Security</h4>
+            <p>Manage your privacy and security settings</p>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-video"></i> Video Preferences</h4>
+            <p>Default video quality and autoplay settings</p>
+          </div>
+          <select class="setting-select">
+            <option>Auto</option>
+            <option>1080p</option>
+            <option>720p</option>
+            <option>480p</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-language"></i> Language</h4>
+            <p>Choose your preferred language</p>
+          </div>
+          <select class="setting-select">
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>German</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <h4><i class="fas fa-question-circle"></i> Help & Support</h4>
+            <p>Get help and contact support</p>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skillio AI Section -->
+    <div class="section-content" id="skillio-ai">
+      <h2>Skillio AI</h2>
+      <p style="color: var(--text-secondary); margin-top: 10px;">Your personal AI assistant for learning,
+        assignments, and course recommendations.</p>
+
+      <div class="ai-chat-container" style="margin-top: 25px;">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-message ai-message">
+            <div class="chat-avatar ai-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="chat-bubble ai-bubble">
+              <p>Hello! I'm Skillio AI. How can I help you today? I can assist you with assignments,
+                recommend courses, or answer your learning questions.</p>
+              <span class="chat-time">Just now</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-container">
+          <input type="text" id="chatInput" class="chat-input" placeholder="Ask Skillio AI anything...">
+          <button class="chat-send-btn" id="chatSendBtn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+          <button class="chat-mic-btn" id="chatMicBtn" title="Voice input">
+            <i class="fas fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- Right Sidebar -->
+    </div>
+  </main>
+
+  <!-- Overlay for mobile menu -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Add Note Modal -->
+  <div class="modal-overlay" id="noteModal">
+    <div class="modal-content note-modal-content">
+      <div class="modal-header">
+        <h3>Add New Note</h3>
+        <button class="modal-close" id="closeNoteModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="noteTitle" placeholder="Note title..." class="note-input">
+        <textarea id="noteText" placeholder="Write your note here..." class="note-textarea" rows="5"></textarea>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="cancelNoteBtn">Cancel</button>
+          <button class="btn-primary" id="saveNoteBtn">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Event Modal -->
+  <div class="modal-overlay" id="eventModal">
+    <div class="modal-content event-modal-content">
+      <div class="modal-header">
+        <h3>Add New Event</h3>
+        <button class="modal-close" id="closeEventModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="eventTitleInput" placeholder="Event title..." class="note-input">
+        <input type="time" id="eventTimeInput" class="note-input">
+        <textarea id="eventDescInput" placeholder="Event description..." class="note-textarea" rows="3"></textarea>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="cancelEventBtn">Cancel</button>
+          <button class="btn-primary" id="saveEventBtn">Save Event</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Friend Modal -->
+  <div class="modal-overlay" id="addFriendModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add Friend</h3>
+        <button class="modal-close" id="closeAddFriendModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="email" id="friendEmailInput" placeholder="Enter friend's email address" class="note-input">
+        <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 15px;">We'll send them a friend
+          request to connect on Skillio.</p>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="cancelAddFriendBtn">Cancel</button>
+          <button class="btn-primary" id="sendFriendRequestBtn">Send Request</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Friend Chat Modal -->
+  <div class="modal-overlay" id="friendChatModal">
+    <div class="modal-content friend-chat-modal">
+      <div class="modal-header">
+        <div class="chat-header-info">
+          <img id="chatFriendAvatar" src="https://i.pravatar.cc/40?img=1" alt="Friend" class="chat-friend-avatar">
+          <div>
+            <h3 id="chatFriendName">Friend Name</h3>
+            <p style="font-size: 12px; color: var(--text-secondary);">Online</p>
+          </div>
+        </div>
+        <button class="modal-close" id="closeFriendChatModal">&times;</button>
+      </div>
+      <div class="modal-body chat-body">
+        <div class="chat-messages" id="friendChatMessages">
+          <div class="chat-message received">
+            <div class="chat-bubble received-bubble">
+              <p>Hey! How's it going?</p>
+              <span class="chat-time">Just now</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-container">
+          <input type="text" id="friendChatInput" class="chat-input" placeholder="Type a message...">
+          <button class="chat-send-btn" id="friendChatSendBtn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
